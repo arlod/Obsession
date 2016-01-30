@@ -3,23 +3,33 @@ using System.Collections;
 
 public class Highlight : MonoBehaviour {
 	private GameObject player;
+
 	public float objectViewDistance;
 	public float pauseTime = 5;
 	private bool HasClickedOnce = false;
+
+	public AudioClip narrationClip;
+	private AudioSource narrationSource;
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
+		narrationSource = gameObject.AddComponent<AudioSource> ();
+		narrationSource.clip = narrationClip;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 	}
+
 	void OnMouseOver(){
 		if (Input.GetMouseButtonDown (0)) {
 			if (!HasClickedOnce) {
 				player.GetComponent<ZoomEffect> ().pauseTime = pauseTime;
 				HasClickedOnce = true;
+				//TODO Play sound here
+				narrationSource.Play();
 			} else {
 				player.GetComponent<ZoomEffect> ().pauseTime = 0;
 			}
@@ -44,5 +54,6 @@ public class Highlight : MonoBehaviour {
 		player.GetComponent<ZoomEffect> ().CanZoom = false;
 
 	}
+
 
 }

@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 
 public class StoryController : MonoBehaviour {
-	public int dayCount;
-	public GameObject[] Day1;
-	public GameObject[] Day20;
-	public GameObject[] Day73;
+//	public GameDay[] days;
 
 	public GameObject titleCard;
-//	public Transform titleText;
-
+	public string title;
 	public TextMesh titleText;
 
-	public bool titleFade;
+	private bool titleFade;
 
 	private int currentDay;
-
-
-	public List <GameObject[]> days = new List<GameObject[]>();
 
 	// Use this for initialization
 	void Start () {
@@ -25,38 +18,40 @@ public class StoryController : MonoBehaviour {
 	}
 
 	public void init(){
-		days.Add (Day1);
-		days.Add (Day20);
-		days.Add (Day73);
-//		titleText = transform.GetComponent<TextMesh>();
-		displayTitleCard ();
-		currentDay = -1;
+		currentDay = 0;
 		titleFade = false;
+		titleText.text = title;
+		displayTitleCard ();
 	}
 
-	public void nextTitleCard(){
-		displayTitleCard ();
-		currentDay++;
-		titleText.text = "Day " + currentDay;
-		if (currentDay != 0) {
-			foreach(GameObject obj in days[currentDay-1]){
-				obj.SetActive(false);
-			}
-		}
-		foreach(GameObject obj in days[currentDay]){
-			obj.SetActive(true);
-		}
-	}
+//	public void nextTitleCard(){
+//		currentDay++;
+//		titleText.text = days[currentDay-1].dayName;
+//		displayTitleCard ();
+//		if (currentDay != 1) {
+//			foreach(GameItem obj in days[currentDay-2].items){
+//				obj.item.SetActive(false);
+//			}
+//		}
+//		foreach(GameItem obj in days[currentDay-1].items){
+//			obj.item.SetActive(true);
+//		}
+//	}
+
+//	public void playCurrentAudioClip(){
+//		AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+//		audioSource.clip = days [currentDay - 1].items [0].audio;
+//		audioSource.Play();
+//	}
 
 	public void displayTitleCard(){
 		titleCard.SetActive (true);
 		titleText.font.material.color = Color.white;
 		Invoke ("hideTitleCard", 2f);
-
 	}
 
 	public void hideTitleCard(){
-		titleCard.SetActive (false);
+		
 		titleFade = true;
 	}
 	
@@ -66,22 +61,46 @@ public class StoryController : MonoBehaviour {
 			if(titleText.font.material.color.a < Time.deltaTime){
 				titleText.font.material.color = new Color(0f,0f,0f, 0f);
 				titleFade = false;
+				titleCard.SetActive (false);
 			} else {
 				Color tmp = new Color(1f,1f,1f,1f);
 				tmp.a = titleText.font.material.color.a - Time.deltaTime;
 				titleText.font.material.color = tmp;
+//				titleCard.GetComponent<Renderer>().material.color.a = tmp.a;
 			}
+
 
 		}
 
 
-		if (Input.GetMouseButtonDown (1)){
-			if(currentDay < dayCount){
-				nextTitleCard();
-			}
-		}
+//		if (Input.GetMouseButtonDown (1)){
+//			if(currentDay < days.Length){
+//				nextTitleCard();
+//			}
+//		}
 
 
 
 	}
+//
+//	[System.Serializable]
+//	public class GameDay{
+//		public GameItem[] items;
+//		public string dayName;
+//	}
+//		
+//	[System.Serializable]
+//	public class GameItem{
+//		public GameObject item;
+//		public AudioClip audio;
+//		public bool hasInteraction;
+//
+//		public GameObject getItem(){
+//			return item;
+//		}
+//
+//		public AudioClip getAudio(){
+//			return audio;
+//		}
+//	}
 }
