@@ -4,6 +4,8 @@ using System.Collections;
 public class Highlight : MonoBehaviour {
 	private GameObject player;
 	public float objectViewDistance;
+	public float pauseTime = 5;
+	private bool HasClickedOnce = false;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
@@ -14,12 +16,20 @@ public class Highlight : MonoBehaviour {
 
 	}
 	void OnMouseOver(){
-	
+		if (Input.GetMouseButtonDown (0)) {
+			if (!HasClickedOnce) {
+				player.GetComponent<ZoomEffect> ().pauseTime = pauseTime;
+				HasClickedOnce = true;
+			} else {
+				player.GetComponent<ZoomEffect> ().pauseTime = 0;
+			}
+		}
 
 		player.GetComponent<ZoomEffect> ().target.x = gameObject.transform.position.x;
 		player.GetComponent<ZoomEffect> ().target.z = gameObject.transform.position.z;
 		player.GetComponent<ZoomEffect> ().targetdistance = objectViewDistance;
 		player.GetComponent<ZoomEffect> ().CanZoom = true;
+
 
 		Behaviour halo = (Behaviour)GetComponent("Halo");
 
