@@ -6,6 +6,7 @@ public class ZoomEffect : MonoBehaviour {
 	public Vector3 startPos = new Vector3(1, 1.03f, 1);
 	public float targetdistance = 0;
 	public bool CanZoom = false;
+	private bool CanZoom4REEL = false;
 	// Use this for initialization
 	void Start () {
 
@@ -14,12 +15,16 @@ public class ZoomEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (CanZoom && Input.GetMouseButton (0) && (Mathf.Abs(gameObject.transform.position.x - target.x) > targetdistance || Mathf.Abs(gameObject.transform.position.z - target.z) > targetdistance)) {
+		if (CanZoom && Input.GetMouseButtonDown (0)) {
+			CanZoom4REEL = true;
+		
+		}
+		if (CanZoom4REEL && (Mathf.Abs(gameObject.transform.position.x - target.x) > targetdistance || Mathf.Abs(gameObject.transform.position.z - target.z) > targetdistance)) {
 
 			target.y = 1f;
 			gameObject.transform.position = Vector3.Lerp (gameObject.transform.position, target, 0.1f);
 		} else if(!Input.GetMouseButton (0)){
+			CanZoom4REEL = false;
 			if(Mathf.Abs(gameObject.transform.position.x - startPos.x) > 0.01f|| Mathf.Abs (gameObject.transform.position.z - startPos.z) > 0.01)
 				target.y = 1f;
 				gameObject.transform.position = Vector3.Lerp (gameObject.transform.position, startPos, 0.1f);
