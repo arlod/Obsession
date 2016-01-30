@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class Highlight : MonoBehaviour {
-	public GameObject player;
+	private GameObject player;
 	public float objectViewDistance;
 	// Use this for initialization
 	void Start () {
-	
+		player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
@@ -14,6 +14,7 @@ public class Highlight : MonoBehaviour {
 
 	}
 	void OnMouseOver(){
+	
 
 		player.GetComponent<ZoomEffect> ().target.x = gameObject.transform.position.x;
 		player.GetComponent<ZoomEffect> ().target.z = gameObject.transform.position.z;
