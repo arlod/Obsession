@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 20b7c78e767034285abd0ac8dc19ad39
-timeCreated: 1454194941
+guid: 26eb691f89b894fefbb8c05cef298941
+timeCreated: 1454194705
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box001
+    4300000: Drawing
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 3.5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -1,15 +1,32 @@
 fileFormatVersion: 2
-guid: 20b7c78e767034285abd0ac8dc19ad39
+guid: 80ced83c1a3e54864ac9b84a3b5a65aa
 timeCreated: 1454194941
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Box001
+    100000: Keyboard
+    100002: //RootNode
+    100004: Laptop_Base
+    100006: Laptop_Screen
+    100008: Laptop_Top
+    400000: Keyboard
+    400002: //RootNode
+    400004: Laptop_Base
+    400006: Laptop_Screen
+    400008: Laptop_Top
+    2300000: Keyboard
+    2300002: Laptop_Base
+    2300004: Laptop_Screen
+    2300006: Laptop_Top
+    3300000: Keyboard
+    3300002: Laptop_Base
+    3300004: Laptop_Screen
+    3300006: Laptop_Top
+    4300000: Laptop_Base
+    4300002: Laptop_Top
+    4300004: Keyboard
+    4300006: Laptop_Screen
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,7 +51,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 3.5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

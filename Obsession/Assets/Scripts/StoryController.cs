@@ -20,7 +20,7 @@ public class StoryController : MonoBehaviour {
 	public void init(){
 		currentDay = 0;
 		titleFade = false;
-		titleText.text = title;
+		//titleText.text = title;
 		displayTitleCard ();
 	}
 
