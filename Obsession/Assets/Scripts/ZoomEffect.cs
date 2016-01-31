@@ -25,7 +25,7 @@ public class ZoomEffect : MonoBehaviour {
 			lockedTargetDistance = targetdistance;
 
 		}
-		Debug.Log (targetdistance);
+		//Debug.Log (targetdistance);
 		if (CanZoom4REEL && (Mathf.Abs(gameObject.transform.position.x - lockedTarget.x) > lockedTargetDistance || Mathf.Abs(gameObject.transform.position.z - lockedTarget.z) > lockedTargetDistance)) {
 			startTime = Time.time;
 			lockedTarget.y = 1f;

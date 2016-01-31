@@ -62,6 +62,7 @@ public class Highlight : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 			if (isBed) {
+				Debug.Log("test");
 				Application.LoadLevel (levelToLoadNext);
 			} else {
 				if (pauseTime == 0){
