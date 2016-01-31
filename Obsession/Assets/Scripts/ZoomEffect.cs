@@ -16,6 +16,7 @@ public class ZoomEffect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (CanZoom && Input.GetMouseButtonDown (0)) {
 			CanZoom4REEL = true;
 		

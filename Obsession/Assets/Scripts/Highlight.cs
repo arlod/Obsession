@@ -29,6 +29,7 @@ public class Highlight : MonoBehaviour {
 		narrationSource = gameObject.AddComponent<AudioSource> ();
 		narrationSource.clip = narrationClip;
 		cam = Camera.main; 
+		pauseTime = 0;
 //		Canvas canv = gameObject.AddComponent<Canvas>();
 //		Text tx = canv.ch
 //		tx.text = mouseOverIdentifier;
@@ -53,28 +54,49 @@ public class Highlight : MonoBehaviour {
 	}
 
 	void OnMouseOver(){
-		onMouseOver = true;
+		if(!HasClickedOnce){
+			onMouseOver = true;
+			
+		}
+
 
 		if (Input.GetMouseButtonDown (0)) {
 			if (isBed) {
 				Application.LoadLevel (levelToLoadNext);
 			} else {
+				if (pauseTime == 0){
+					pauseTime = 20;
+					onMouseOver = false;
+				}
+				else {
+					pauseTime = 0;
+					//onMouseOver = true;
+
+				}
+
 				if (!HasClickedOnce) {
 					player.GetComponent<ZoomEffect> ().pauseTime = pauseTime;
+
+
 					HasClickedOnce = true;
 
 					narrationSource.Play ();
 				} else {
-					player.GetComponent<ZoomEffect> ().pauseTime = 0;
+					player.GetComponent<ZoomEffect> ().pauseTime = pauseTime;
+
 				}
 			}
+
+
 		}
 
 		player.GetComponent<ZoomEffect> ().target.x = gameObject.transform.position.x;
 		player.GetComponent<ZoomEffect> ().target.z = gameObject.transform.position.z;
 		player.GetComponent<ZoomEffect> ().targetdistance = objectViewDistance;
-		player.GetComponent<ZoomEffect> ().CanZoom = true;
 
+		if (!isBed) {
+			player.GetComponent<ZoomEffect> ().CanZoom = true;
+		}
 
 		Behaviour halo = (Behaviour)GetComponent("Halo");
 
